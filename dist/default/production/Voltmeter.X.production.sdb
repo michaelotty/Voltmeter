@@ -9,12 +9,18 @@
 [v ___ftpack __ftpack `(f  1 e 3 0 ]
 "86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
 [v ___ftadd __ftadd `(f  1 e 3 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+"44 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
 "17 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\itoa.c
 [v _utoa utoa `(*.4uc  1 e 1 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
 [v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
 [v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"28 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
 "6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic\eeprom.c
 [v _eecpymem eecpymem `(v  1 e 0 0 ]
 "24
@@ -33,7 +39,9 @@
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 0 0 ]
 "110
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 0 0 ]
-"14 H:\dos\PIC\Voltmeter.X\main.c
+"120
+[v _Lcd_Write_Int Lcd_Write_Int `(v  1 e 0 0 ]
+"13 H:\dos\PIC\Voltmeter.X\main.c
 [v _main main `(v  1 e 0 0 ]
 "441 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f84a.h
 [v _TRISA TRISA `VEuc  1 e 1 @133 ]
@@ -59,14 +67,14 @@
 [v _RB5 RB5 `VEb  1 e 0 @53 ]
 "648
 [v _RB6 RB6 `VEb  1 e 0 @54 ]
-"14 H:\dos\PIC\Voltmeter.X\main.c
+"13 H:\dos\PIC\Voltmeter.X\main.c
 [v _main main `(v  1 e 0 0 ]
 {
-"23
-[v main@voltage voltage `ui  1 a 2 13 ]
-"26
-[v main@string string `*.24uc  1 a 1 15 ]
-"28
+"31
+[v main@string string `*.24uc  1 a 1 47 ]
+"24
+[v main@voltage voltage `ui  1 a 2 45 ]
+"41
 } 0
 "6 H:\dos\PIC\Voltmeter.X\adc.c
 [v _readADC readADC `(ui  1 e 2 0 ]
@@ -78,6 +86,93 @@
 "8
 [v readADC@bits bits `uc  1 a 1 6 ]
 "49
+} 0
+"28 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwtoft.c
+[v ___lwtoft __lwtoft `(f  1 e 3 0 ]
+{
+[v ___lwtoft@c c `ui  1 p 2 8 ]
+"31
+} 0
+"44 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\fttol.c
+[v ___fttol __fttol `(l  1 e 4 0 ]
+{
+"47
+[v ___fttol@lval lval `ul  1 a 4 37 ]
+"46
+[v ___fttol@exp1 exp1 `uc  1 a 1 41 ]
+[v ___fttol@sign1 sign1 `uc  1 a 1 36 ]
+"44
+[v ___fttol@f1 f1 `f  1 p 3 28 ]
+"73
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftmul.c
+[v ___ftmul __ftmul `(f  1 e 3 0 ]
+{
+"65
+[v ___ftmul@f3_as_product f3_as_product `um  1 a 3 23 ]
+"64
+[v ___ftmul@sign sign `uc  1 a 1 27 ]
+[v ___ftmul@cntr cntr `uc  1 a 1 26 ]
+[v ___ftmul@exp exp `uc  1 a 1 22 ]
+"62
+[v ___ftmul@f1 f1 `f  1 p 3 12 ]
+[v ___ftmul@f2 f2 `f  1 p 3 15 ]
+"157
+} 0
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+{
+[v ___ftpack@arg arg `um  1 p 3 0 ]
+[v ___ftpack@exp exp `uc  1 p 1 3 ]
+[v ___ftpack@sign sign `uc  1 p 1 4 ]
+"86
+} 0
+"120 H:\dos\PIC\Voltmeter.X\lcd.c
+[v _Lcd_Write_Int Lcd_Write_Int `(v  1 e 0 0 ]
+{
+"122
+[v Lcd_Write_Int@temp temp `[16]uc  1 a 16 19 ]
+"120
+[v Lcd_Write_Int@a a `ui  1 p 2 17 ]
+"125
+} 0
+"17 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\itoa.c
+[v _utoa utoa `(*.4uc  1 e 1 0 ]
+{
+[v utoa@buf buf `*.4uc  1 a 1 wreg ]
+"19
+[v utoa@v v `ui  1 a 2 13 ]
+"20
+[v utoa@c c `uc  1 a 1 15 ]
+"17
+[v utoa@buf buf `*.4uc  1 a 1 wreg ]
+[v utoa@val val `ui  1 p 2 8 ]
+[v utoa@base base `i  1 p 2 10 ]
+"22
+[v utoa@buf buf `*.4uc  1 a 1 16 ]
+"37
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwmod@counter counter `uc  1 a 1 5 ]
+"6
+[v ___lwmod@divisor divisor `ui  1 p 2 0 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 2 ]
+"26
+} 0
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"11
+[v ___lwdiv@quotient quotient `ui  1 a 2 5 ]
+"12
+[v ___lwdiv@counter counter `uc  1 a 1 7 ]
+"6
+[v ___lwdiv@divisor divisor `ui  1 p 2 0 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 2 ]
+"31
 } 0
 "110 H:\dos\PIC\Voltmeter.X\lcd.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 0 0 ]

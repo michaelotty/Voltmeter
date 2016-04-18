@@ -4,18 +4,17 @@ Linker command line:
 
 --edf=C:\Program Files (x86)\Microchip\xc8\v1.35\dat\en_msgs.txt -cs \
   -h+dist/default/production\Voltmeter.X.production.sym \
-  --cmf=dist/default/production\Voltmeter.X.production.cmf -z -Q16F84A \
-  -oC:\Users\mo360\AppData\Local\Temp\s5s4.2 \
+  --cmf=dist/default/production\Voltmeter.X.production.cmf -z -w9 --norlf \
+  -Q16F84A -oC:\Users\mo360\AppData\Local\Temp\s55k.2 \
   -Mdist/default/production/Voltmeter.X.production.map -E1 -ver=XC8 \
-  -ASTACK=01Ch-04dh -pstack=STACK -ACODE=00h-03FFh -ASTRCODE=00h-03FFh \
-  -ASTRING=00h-0FFhx4 -ACONST=00h-0FFhx4 -AENTRY=00h-0FFhx4 \
-  -ABANK0=0Ch-04Dh -ARAM=0Ch-04Dh -AABS1=0Ch-04Fh -ACOMMON=04Eh-04Fh \
-  -ASFR0=00h-0Bh -ASFR1=080h-0CDh -preset_vec=00h,intentry,init,end_init \
-  -ppowerup=CODE -pcinit=CODE -pfunctab=CODE -ACONFIG=02007h-02007h \
-  -pconfig=CONFIG -DCONFIG=2 -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 \
-  -AEEDATA=00h-03Fh/02100h -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 \
-  -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\mo360\AppData\Local\Temp\s5s4.obj \
+  -ACODE=00h-03FFh -ASTRCODE=00h-03FFh -ASTRING=00h-0FFhx4 \
+  -ACONST=00h-0FFhx4 -AENTRY=00h-0FFhx4 -ABANK0=0Ch-04Dh -ARAM=0Ch-04Dh \
+  -AABS1=0Ch-04Fh -ACOMMON=04Eh-04Fh -ASFR0=00h-0Bh -ASFR1=080h-0CDh \
+  -preset_vec=00h,intentry,init,end_init -ppowerup=CODE -pcinit=CODE \
+  -pfunctab=CODE -ACONFIG=02007h-02007h -pconfig=CONFIG -DCONFIG=2 \
+  -AIDLOC=02000h-02003h -pidloc=IDLOC -DIDLOC=2 -AEEDATA=00h-03Fh/02100h \
+  -peeprom_data=EEDATA -DEEDATA=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
+  -DENTRY=2 -k C:\Users\mo360\AppData\Local\Temp\s55k.obj \
   dist/default/production\Voltmeter.X.production.obj 
 
 Object code version is 3.11
@@ -25,50 +24,63 @@ Machine type is 16F84A
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\mo360\AppData\Local\Temp\s5s4.obj
-                end_init                              0        0        1        0       0
-                config                             2007     2007        1     400E       0
+C:\Users\mo360\AppData\Local\Temp\s55k.obj
+                end_init                              0        0        2        0       0
 dist/default/production\Voltmeter.X.production.obj
                 cinit                               3FE      3FE        2      7FC       0
-                text8                               29D      29D       17      53A       0
-                text7                               28A      28A       13      514       0
-                text6                               27B      27B        F      4F6       0
-                text5                               32E      32E       34      65C       0
-                text4                               362      362       42      6C4       0
-                text3                               2D3      2D3       2A      5A6       0
-                text2                               2FD      2FD       31      5FA       0
-                text1                               3A4      3A4       5A      748       0
-                maintext                            2B4      2B4       1F      568       0
-                cstackBANK0                           C        C       10        C       1
-                strings                               1        1       1F        2       0
+                text16                                0        0       17        0       0
+                text15                               17       17       13        0       0
+                text14                               2A       2A        F        0       0
+                text13                               70       70       34       E0       0
+                text12                               E1       E1       42      1C2       0
+                text11                               39       39       2A        0       0
+                text10                                C        C       31       18       0
+                text9                                A4       A4       3D      148       0
+                text8                                3D       3D       33       7A       0
+                text7                               17D      17D       5C      2FA       0
+                text6                                63       63       12        0       0
+                text5                               235      235       6D      46A       0
+                text4                               32F      32F       CF      65E       0
+                text3                               2A2      2A2       8D      544       0
+                text2                                75       75       14        0       0
+                text1                               123      123       5A      246       0
+                maintext                            1D9      1D9       5C      3B2       0
+                cstackBANK0                           C        C       30        C       1
+                strings                              89       89       19        0       0
 
 TOTAL           Name                               Link     Load   Length     Space
-        CLASS   STACK          
-
         CLASS   CODE           
-                end_init                              0        0        1         0
+                end_init                              0        0        2         0
                 cinit                               3FE      3FE        2         0
-                text8                               29D      29D       17         0
-                text7                               28A      28A       13         0
-                text6                               27B      27B        F         0
-                text5                               32E      32E       34         0
-                text4                               362      362       42         0
-                text3                               2D3      2D3       2A         0
-                text2                               2FD      2FD       31         0
-                text1                               3A4      3A4       5A         0
-                maintext                            2B4      2B4       1F         0
+                text16                                0        0       17         0
+                text15                               17       17       13         0
+                text14                               2A       2A        F         0
+                text13                               70       70       34         0
+                text12                               E1       E1       42         0
+                text11                               39       39       2A         0
+                text10                                C        C       31         0
+                text9                                A4       A4       3D         0
+                text8                                3D       3D       33         0
+                text7                               17D      17D       5C         0
+                text6                                63       63       12         0
+                text5                               235      235       6D         0
+                text4                               32F      32F       CF         0
+                text3                               2A2      2A2       8D         0
+                text2                                75       75       14         0
+                text1                               123      123       5A         0
+                maintext                            1D9      1D9       5C         0
 
         CLASS   STRCODE        
 
         CLASS   STRING         
-                strings                               1        1       1F         0
+                strings                              89       89       19         0
 
         CLASS   CONST          
 
         CLASS   ENTRY          
 
         CLASS   BANK0          
-                cstackBANK0                           C        C       10         1
+                cstackBANK0                           C        C       30         1
 
         CLASS   RAM            
 
@@ -82,7 +94,6 @@ TOTAL           Name                               Link     Load   Length     Sp
         CLASS   SFR1           
 
         CLASS   CONFIG         
-                config                             2007     2007        1         0
 
         CLASS   IDLOC          
 
@@ -90,541 +101,278 @@ TOTAL           Name                               Link     Load   Length     Sp
 
         CLASS   BANK1          
 
+        CLASS   STACK          
+
 
 
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
-                reset_vec                      000000  000001  000001         0       0  CODE        2
-                strings                        000001  00001F  000020         2       0  STRING      2
-                cstackBANK0                    00000C  000010  00001C         C       1  BANK0       1
-                text6                          00027B  00000F  00028A       4F6       0  CODE        2
-                text7                          00028A  000013  00029D       514       0  CODE        2
-                text8                          00029D  000017  0002B4       53A       0  CODE        2
-                maintext                       0002B4  00001F  0002D3       568       0  CODE        2
-                text3                          0002D3  00002A  0002FD       5A6       0  CODE        2
-                text2                          0002FD  000031  00032E       5FA       0  CODE        2
-                text5                          00032E  000034  000362       65C       0  CODE        2
-                text4                          000362  000042  0003A4       6C4       0  CODE        2
-                text1                          0003A4  00005A  0003FE       748       0  CODE        2
+                reset_vec                      000000  000002  000002         0       0  CODE        2
+                cstackBANK0                    00000C  000030  00003C         C       1  BANK0       1
+                text10                         00000C  000031  00003D        18       0  CODE        2
+                text8                          00003D  000033  000070        7A       0  CODE        2
+                text13                         000070  000034  0000A4        E0       0  CODE        2
+                text9                          0000A4  00003D  0000E1       148       0  CODE        2
+                text12                         0000E1  000042  000123       1C2       0  CODE        2
+                text1                          000123  00005A  00017D       246       0  CODE        2
+                text7                          00017D  00005C  0001D9       2FA       0  CODE        2
+                maintext                       0001D9  00005C  000235       3B2       0  CODE        2
+                text5                          000235  00006D  0002A2       46A       0  CODE        2
+                text3                          0002A2  00008D  00032F       544       0  CODE        2
+                text4                          00032F  0000CF  0003FE       65E       0  CODE        2
                 cinit                          0003FE  000002  000400       7FC       0  CODE        2
-                config                         002007  000001  002008      400E       0  CONFIG      2
 
 
 UNUSED ADDRESS RANGES
 
         Name                Unused          Largest block    Delta
-        BANK0            001C-004D             32           1
-        CODE             0020-027A            25B           2
-        CONST            0020-027A            100           2
-        EEDATA           2100-213F             40           2
-        ENTRY            0020-027A            100           2
-        IDLOC            2000-2003              4           2
-        RAM              001C-004D             32           1
-        SFR0             0000-000B              C           1
-        SFR1             0080-00CD             4E           1
-        STACK            001C-004D             32           1
-        STRCODE          0020-027A            25B           2
-        STRING           0020-027A            100           2
+        BANK0            03C-04D            12           1
+        CONFIG           2007-2007             1           2
+        EEDATA           2100-213F            40           2
+        IDLOC            2000-2003             4           2
+        RAM              03C-04D            12           1
+        SFR0             000-00B             C           1
+        SFR1             080-0CD            4E           1
 
                                   Symbol Table
 
-?_readADC                  cstackBANK0  000C
-Lcd_Cmd@a                  cstackBANK0  000F
-Lcd_Port@a                 cstackBANK0  000C
-Lcd_Set_Cursor@a           cstackBANK0  0013
-Lcd_Set_Cursor@b           cstackBANK0  0010
-Lcd_Set_Cursor@temp        cstackBANK0  0016
-Lcd_Set_Cursor@y           cstackBANK0  0015
-Lcd_Set_Cursor@z           cstackBANK0  0014
-Lcd_Write_Char@a           cstackBANK0  0010
-Lcd_Write_Char@temp        cstackBANK0  000E
-Lcd_Write_Char@y           cstackBANK0  000F
-Lcd_Write_String@a         cstackBANK0  0011
-Lcd_Write_String@i         cstackBANK0  0016
-_Lcd_Clear                 text6        027B
-_Lcd_Cmd                   text7        028A
-_Lcd_Init                  text5        032E
-_Lcd_Port                  text8        029D
-_Lcd_Set_Cursor            text4        0362
-_Lcd_Write_Char            text3        02D3
-_Lcd_Write_String          text2        02FD
-_RA1                       (abs)        0029
-_RA2                       (abs)        002A
-_RA3                       (abs)        002B
-_RB0                       (abs)        0030
-_RB1                       (abs)        0031
-_RB2                       (abs)        0032
-_RB3                       (abs)        0033
-_RB4                       (abs)        0034
-_RB5                       (abs)        0035
-_RB6                       (abs)        0036
-_TRISA                     (abs)        0085
-_TRISB                     (abs)        0086
-__CFG_CP$OFF               (abs)        0000
-__CFG_FOSC$XT              (abs)        0000
-__CFG_PWRTE$ON             (abs)        0000
-__CFG_WDTE$OFF             (abs)        0000
-__Habs1                    abs1         0000
-__Hbank0                   bank0        0000
-__Hbank1                   bank1        0000
-__Hcinit                   cinit        0400
-__Hclrtext                 clrtext      0000
-__Hcode                    code         0000
-__Hcommon                  common       0000
-__Hconfig                  config       2008
-__HcstackBANK0             cstackBANK0  0000
-__HcstackCOMMON            cstackCOMMON 0000
-__Heeprom_data             eeprom_data  0000
-__Hend_init                end_init     0001
-__Hfunctab                 functab      0000
-__Hidloc                   idloc        0000
-__Hinit                    init         0000
-__Hintentry                intentry     0000
-__Hmaintext                maintext     0000
-__Hpowerup                 powerup      0000
-__Hram                     ram          0000
-__Hreset_vec               reset_vec    0000
-__Hsfr0                    sfr0         0000
-__Hsfr1                    sfr1         0000
-__Hspace_0                 (abs)        2008
-__Hspace_1                 (abs)        001C
-__Hspace_2                 (abs)        0000
-__Hspace_3                 (abs)        0000
-__Hstack                   stack        0000
-__Hstrings                 strings      0000
-__Htext                    text         0000
-__Labs1                    abs1         0000
-__Lbank0                   bank0        0000
-__Lbank1                   bank1        0000
-__Lcinit                   cinit        03FE
-__Lclrtext                 clrtext      0000
-__Lcode                    code         0000
-__Lcommon                  common       0000
-__Lconfig                  config       2007
-__LcstackBANK0             cstackBANK0  0000
-__LcstackCOMMON            cstackCOMMON 0000
-__Leeprom_data             eeprom_data  0000
-__Lend_init                end_init     0000
-__Lfunctab                 functab      0000
-__Lidloc                   idloc        0000
-__Linit                    init         0000
-__Lintentry                intentry     0000
-__Lmaintext                maintext     0000
-__Lpowerup                 powerup      0000
-__Lram                     ram          0000
-__Lreset_vec               reset_vec    0000
-__Lsfr0                    sfr0         0000
-__Lsfr1                    sfr1         0000
-__Lspace_0                 (abs)        0000
-__Lspace_1                 (abs)        0000
-__Lspace_2                 (abs)        0000
-__Lspace_3                 (abs)        0000
-__Lstack                   stack        0000
-__Lstrings                 strings      0000
-__Ltext                    text         0000
-__S0                       (abs)        2008
-__S1                       (abs)        001C
-__S2                       (abs)        0000
-__S3                       (abs)        0000
-___int_sp                  stack        0000
-___latbits                 (abs)        0000
-___sp                      stack        0000
-__end_of_Lcd_Clear         text6        028A
-__end_of_Lcd_Cmd           text7        029D
-__end_of_Lcd_Init          text5        0362
-__end_of_Lcd_Port          text8        02B4
-__end_of_Lcd_Set_Cursor    text4        03A4
-__end_of_Lcd_Write_Char    text3        02FD
-__end_of_Lcd_Write_String  text2        032E
-__end_of__initialization   cinit        03FE
-__end_of__stringtab        strings      0011
-__end_of_main              maintext     02D3
-__end_of_readADC           text1        03FE
-__initialization           cinit        03FE
-__pcstackBANK0             cstackBANK0  000C
-__pcstackCOMMON            cstackCOMMON 0000
-__pmaintext                maintext     02B4
-__pstrings                 strings      0001
-__ptext1                   text1        03A4
-__ptext2                   text2        02FD
-__ptext3                   text3        02D3
-__ptext4                   text4        0362
-__ptext5                   text5        032E
-__ptext6                   text6        027B
-__ptext7                   text7        028A
-__ptext8                   text8        029D
-__size_of_Lcd_Clear        (abs)        0000
-__size_of_Lcd_Cmd          (abs)        0000
-__size_of_Lcd_Init         (abs)        0000
-__size_of_Lcd_Port         (abs)        0000
-__size_of_Lcd_Set_Cursor   (abs)        0000
-__size_of_Lcd_Write_Char   (abs)        0000
-__size_of_Lcd_Write_String (abs)        0000
-__size_of_main             (abs)        0000
-__size_of_readADC          (abs)        0000
-__stringbase               strings      0010
-__stringtab                strings      0001
-_main                      maintext     02B4
-_readADC                   text1        03A4
-btemp                      (abs)        004E
-end_of_initialization      cinit        03FE
-intlevel0                  functab      0000
-intlevel1                  functab      0000
-intlevel2                  functab      0000
-intlevel3                  functab      0000
-intlevel4                  functab      0000
-intlevel5                  functab      0000
-ltemp                      (abs)        004E
-ltemp0                     (abs)        004E
-ltemp1                     (abs)        0052
-ltemp2                     (abs)        0056
-ltemp3                     (abs)        0050
-main@string                cstackBANK0  001B
-main@voltage               cstackBANK0  0019
-readADC@bits               cstackBANK0  0012
-readADC@rxData             cstackBANK0  0013
-readADC@volt               cstackBANK0  0010
-reset_vec                  reset_vec    0000
-stackhi                    (abs)        0000
-stacklo                    (abs)        0000
-start                      init         0000
-start_initialization       cinit        03FE
-ttemp                      (abs)        004E
-ttemp0                     (abs)        004E
-ttemp1                     (abs)        0051
-ttemp2                     (abs)        0054
-ttemp3                     (abs)        0057
-ttemp4                     (abs)        004F
-wtemp                      (abs)        004E
-wtemp0                     (abs)        004E
-wtemp1                     (abs)        0050
-wtemp2                     (abs)        0052
-wtemp3                     (abs)        0054
-wtemp4                     (abs)        0056
-wtemp5                     (abs)        0058
-wtemp6                     (abs)        004F
-
-
-FUNCTION INFORMATION:
-
- *************** function _main *****************
- Defined at:
-		line 14 in file "main.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-  voltage         2   13[BANK0 ] unsigned int 
-  string          1   15[BANK0 ] PTR unsigned char 
-		 -> STR_1(15), 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       3
-      Temps:          0       1
-      Totals:         0       4
-Total ram usage:        4 bytes
- Hardware stack levels required when called:    3
- This function calls:
-		_Lcd_Clear
-		_Lcd_Init
-		_Lcd_Set_Cursor
-		_Lcd_Write_String
-		_readADC
- This function is called by:
-		Startup code after reset
- This function uses a non-reentrant model
-
-
- *************** function _readADC *****************
- Defined at:
-		line 6 in file "adc.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-  volt            2    4[BANK0 ] unsigned int 
-  rxData          1    7[BANK0 ] unsigned char 
-  bits            1    6[BANK0 ] unsigned char 
- Return value:  Size  Location     Type
-                  2    0[BANK0 ] unsigned int 
- Registers used:
-		wreg, status,2, status,0
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       2
-      Locals:         0       4
-      Temps:          0       2
-      Totals:         0       8
-Total ram usage:        8 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Write_String *****************
- Defined at:
-		line 110 in file "lcd.c"
- Parameters:    Size  Location     Type
-  a               2    5[BANK0 ] PTR unsigned char 
-		 -> Lcd_Write_Int@temp(16), STR_1(15), 
- Auto vars:     Size  Location     Type
-  i               2   10[BANK0 ] int 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, fsr0l, fsr0h, status,2, status,0, btemp+1, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       2
-      Locals:         0       2
-      Temps:          0       3
-      Totals:         0       7
-Total ram usage:        7 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_Lcd_Write_Char
- This function is called by:
-		_main
-		_Lcd_Write_Int
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Write_Char *****************
- Defined at:
-		line 93 in file "lcd.c"
- Parameters:    Size  Location     Type
-  a               1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  a               1    4[BANK0 ] unsigned char 
-  y               1    3[BANK0 ] unsigned char 
-  temp            1    2[BANK0 ] unsigned char 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2, status,0, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       3
-      Temps:          0       1
-      Totals:         0       4
-Total ram usage:        4 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		_Lcd_Port
- This function is called by:
-		_Lcd_Write_String
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Set_Cursor *****************
- Defined at:
-		line 51 in file "lcd.c"
- Parameters:    Size  Location     Type
-  a               1    wreg     unsigned char 
-  b               1    4[BANK0 ] unsigned char 
- Auto vars:     Size  Location     Type
-  a               1    7[BANK0 ] unsigned char 
-  temp            1   10[BANK0 ] unsigned char 
-  y               1    9[BANK0 ] unsigned char 
-  z               1    8[BANK0 ] unsigned char 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2, status,0, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       1
-      Locals:         0       4
-      Temps:          0       2
-      Totals:         0       7
-Total ram usage:        7 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_Lcd_Cmd
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Init *****************
- Defined at:
-		line 73 in file "lcd.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2, status,0, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       0
-      Temps:          0       2
-      Totals:         0       2
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_Lcd_Cmd
-		_Lcd_Port
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Clear *****************
- Defined at:
-		line 43 in file "lcd.c"
- Parameters:    Size  Location     Type
-		None
- Auto vars:     Size  Location     Type
-		None
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2, status,0, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       0
-      Temps:          0       2
-      Totals:         0       2
-Total ram usage:        2 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    2
- This function calls:
-		_Lcd_Cmd
- This function is called by:
-		_main
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Cmd *****************
- Defined at:
-		line 30 in file "lcd.c"
- Parameters:    Size  Location     Type
-  a               1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  a               1    3[BANK0 ] unsigned char 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg, status,2, status,0, pclath, cstack
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       1
-      Temps:          0       2
-      Totals:         0       3
-Total ram usage:        3 bytes
- Hardware stack levels used:    1
- Hardware stack levels required when called:    1
- This function calls:
-		_Lcd_Port
- This function is called by:
-		_Lcd_Clear
-		_Lcd_Set_Cursor
-		_Lcd_Init
-		_Lcd_Shift_Right
-		_Lcd_Shift_Left
- This function uses a non-reentrant model
-
-
- *************** function _Lcd_Port *****************
- Defined at:
-		line 6 in file "lcd.c"
- Parameters:    Size  Location     Type
-  a               1    wreg     unsigned char 
- Auto vars:     Size  Location     Type
-  a               1    0[BANK0 ] unsigned char 
- Return value:  Size  Location     Type
-		None               void
- Registers used:
-		wreg
- Tracked objects:
-		On entry : 
-		On exit  : 
-		Unchanged: 
- Data sizes:     COMMON   BANK0
-      Params:         0       0
-      Locals:         0       1
-      Temps:          0       0
-      Totals:         0       1
-Total ram usage:        1 bytes
- Hardware stack levels used:    1
- This function calls:
-		Nothing
- This function is called by:
-		_Lcd_Cmd
-		_Lcd_Init
-		_Lcd_Write_Char
- This function uses a non-reentrant model
-
-
-
-MODULE INFORMATION
-
-Module		Function		Class		Link	Load	Size
-adc.c
-		_readADC       		CODE           	03A4	0000	91
-
-adc.c estimated size: 91
-
-shared
-		__stringtab    		STRING         	0001	0000	17
-		__initialization		CODE           	03FE	0000	1
-
-shared estimated size: 18
-
-lcd.c
-		_Lcd_Write_String		CODE           	02FD	0000	50
-		_Lcd_Init      		CODE           	032E	0000	53
-		_Lcd_Write_Char		CODE           	02D3	0000	43
-		_Lcd_Cmd       		CODE           	028A	0000	20
-		_Lcd_Set_Cursor		CODE           	0362	0000	67
-		_Lcd_Clear     		CODE           	027B	0000	16
-		_Lcd_Port      		CODE           	029D	0000	24
-
-lcd.c estimated size: 273
-
-main.c
-		_main          		CODE           	02B4	0000	32
-
-main.c estimated size: 32
-
+?___ftpack                 cstackBANK0  00C
+?___lwdiv                  cstackBANK0  00C
+?___lwmod                  cstackBANK0  00C
+?_readADC                  cstackBANK0  00C
+Lcd_Port@a                 cstackBANK0  00C
+Lcd_Write_Char@temp        cstackBANK0  00E
+Lcd_Cmd@a                  cstackBANK0  00F
+Lcd_Write_Char@y           cstackBANK0  00F
+_Lcd_Port                  text16       000
+__CFG_CP$OFF               (abs)        000
+__CFG_FOSC$XT              (abs)        000
+__CFG_PWRTE$ON             (abs)        000
+__CFG_WDTE$OFF             (abs)        000
+__Habs1                    abs1         000
+__Hbank0                   bank0        000
+__Hbank1                   bank1        000
+__Hclrtext                 clrtext      000
+__Hcode                    code         000
+__Hcommon                  common       000
+__Hconfig                  config       000
+__Heeprom_data             eeprom_data  000
+__Hfunctab                 functab      000
+__Hidloc                   idloc        000
+__Hinit                    init         000
+__Hintentry                intentry     000
+__Hmaintext                maintext     000
+__Hpowerup                 powerup      000
+__Hram                     ram          000
+__Hreset_vec               reset_vec    000
+__Hsfr0                    sfr0         000
+__Hsfr1                    sfr1         000
+__Hspace_2                 (abs)        000
+__Hspace_3                 (abs)        000
+__Hstack                   stack        000
+__Hstrings                 strings      000
+__Htext                    text         000
+__Labs1                    abs1         000
+__Lbank0                   bank0        000
+__Lbank1                   bank1        000
+__Lclrtext                 clrtext      000
+__Lcode                    code         000
+__Lcommon                  common       000
+__Lconfig                  config       000
+__Leeprom_data             eeprom_data  000
+__Lend_init                end_init     000
+__Lfunctab                 functab      000
+__Lidloc                   idloc        000
+__Linit                    init         000
+__Lintentry                intentry     000
+__Lmaintext                maintext     000
+__Lpowerup                 powerup      000
+__Lram                     ram          000
+__Lreset_vec               reset_vec    000
+__Lsfr0                    sfr0         000
+__Lsfr1                    sfr1         000
+__Lspace_0                 (abs)        000
+__Lspace_1                 (abs)        000
+__Lspace_2                 (abs)        000
+__Lspace_3                 (abs)        000
+__Lstack                   stack        000
+__Lstrings                 strings      000
+__Ltext                    text         000
+__S3                       (abs)        000
+___int_sp                  stack        000
+___latbits                 (abs)        000
+___sp                      stack        000
+__pcstackCOMMON            cstackCOMMON 000
+__ptext16                  text16       000
+__size_of_Lcd_Clear        (abs)        000
+__size_of_Lcd_Cmd          (abs)        000
+__size_of_Lcd_Init         (abs)        000
+__size_of_Lcd_Port         (abs)        000
+__size_of_Lcd_Set_Cursor   (abs)        000
+__size_of_Lcd_Write_Char   (abs)        000
+__size_of_Lcd_Write_Int    (abs)        000
+__size_of_Lcd_Write_String (abs)        000
+__size_of___ftmul          (abs)        000
+__size_of___ftpack         (abs)        000
+__size_of___fttol          (abs)        000
+__size_of___lwdiv          (abs)        000
+__size_of___lwmod          (abs)        000
+__size_of___lwtoft         (abs)        000
+__size_of_main             (abs)        000
+__size_of_readADC          (abs)        000
+__size_of_utoa             (abs)        000
+intlevel0                  functab      000
+intlevel1                  functab      000
+intlevel2                  functab      000
+intlevel3                  functab      000
+intlevel4                  functab      000
+intlevel5                  functab      000
+reset_vec                  reset_vec    000
+stackhi                    (abs)        000
+stacklo                    (abs)        000
+start                      init         000
+__Hend_init                end_init     002
+___ftpack@arg              cstackBANK0  00C
+___lwdiv@divisor           cstackBANK0  00C
+___lwmod@divisor           cstackBANK0  00C
+__pcstackBANK0             cstackBANK0  00C
+___lwdiv@dividend          cstackBANK0  00E
+___lwmod@dividend          cstackBANK0  00E
+___ftpack@exp              cstackBANK0  00F
+Lcd_Set_Cursor@b           cstackBANK0  010
+Lcd_Write_Char@a           cstackBANK0  010
+___ftpack@sign             cstackBANK0  010
+readADC@volt               cstackBANK0  010
+Lcd_Write_String@a         cstackBANK0  011
+___lwdiv@quotient          cstackBANK0  011
+___lwmod@counter           cstackBANK0  011
+readADC@bits               cstackBANK0  012
+Lcd_Set_Cursor@a           cstackBANK0  013
+___lwdiv@counter           cstackBANK0  013
+readADC@rxData             cstackBANK0  013
+?___lwtoft                 cstackBANK0  014
+Lcd_Set_Cursor@z           cstackBANK0  014
+___lwtoft@c                cstackBANK0  014
+utoa@val                   cstackBANK0  014
+Lcd_Set_Cursor@y           cstackBANK0  015
+Lcd_Set_Cursor@temp        cstackBANK0  016
+Lcd_Write_String@i         cstackBANK0  016
+utoa@base                  cstackBANK0  016
+?___ftmul                  cstackBANK0  018
+_Lcd_Write_String          text10       00C
+___ftmul@f1                cstackBANK0  018
+__ptext10                  text10       00C
+utoa@v                     cstackBANK0  019
+___ftmul@f2                cstackBANK0  01B
+utoa@c                     cstackBANK0  01B
+utoa@buf                   cstackBANK0  01C
+Lcd_Write_Int@a            cstackBANK0  01D
+Lcd_Write_Int@temp         cstackBANK0  01F
+___ftmul@exp               cstackBANK0  022
+___ftmul@f3_as_product     cstackBANK0  023
+___ftmul@cntr              cstackBANK0  026
+___ftmul@sign              cstackBANK0  027
+?___fttol                  cstackBANK0  028
+___fttol@f1                cstackBANK0  028
+_RA1                       (abs)        029
+_RA2                       (abs)        02A
+_RA3                       (abs)        02B
+_Lcd_Cmd                   text15       017
+__end_of_Lcd_Port          text16       017
+__ptext15                  text15       017
+_RB0                       (abs)        030
+___fttol@sign1             cstackBANK0  030
+_RB1                       (abs)        031
+___fttol@lval              cstackBANK0  031
+_RB2                       (abs)        032
+_RB3                       (abs)        033
+_RB4                       (abs)        034
+_RB5                       (abs)        035
+___fttol@exp1              cstackBANK0  035
+_RB6                       (abs)        036
+main@voltage               cstackBANK0  039
+main@string                cstackBANK0  03B
+__Hspace_1                 (abs)        03C
+__S1                       (abs)        03C
+btemp                      (abs)        04E
+ltemp                      (abs)        04E
+ltemp0                     (abs)        04E
+ttemp                      (abs)        04E
+ttemp0                     (abs)        04E
+wtemp                      (abs)        04E
+wtemp0                     (abs)        04E
+ttemp4                     (abs)        04F
+wtemp6                     (abs)        04F
+ltemp3                     (abs)        050
+wtemp1                     (abs)        050
+ttemp1                     (abs)        051
+ltemp1                     (abs)        052
+wtemp2                     (abs)        052
+_Lcd_Clear                 text14       02A
+__end_of_Lcd_Cmd           text15       02A
+__ptext14                  text14       02A
+ttemp2                     (abs)        054
+wtemp3                     (abs)        054
+ltemp2                     (abs)        056
+wtemp4                     (abs)        056
+ttemp3                     (abs)        057
+wtemp5                     (abs)        058
+_Lcd_Write_Char            text11       039
+__end_of_Lcd_Clear         text14       039
+__ptext11                  text11       039
+___lwmod                   text8        03D
+__end_of_Lcd_Write_String  text10       03D
+__ptext8                   text8        03D
+_TRISA                     (abs)        085
+_TRISB                     (abs)        086
+_Lcd_Write_Int             text6        063
+__end_of_Lcd_Write_Char    text11       063
+__ptext6                   text6        063
+_Lcd_Init                  text13       070
+__end_of___lwmod           text8        070
+__ptext13                  text13       070
+___lwtoft                  text2        075
+__end_of_Lcd_Write_Int     text6        075
+__ptext2                   text2        075
+__HcstackBANK0             cstackBANK0  112
+__HcstackCOMMON            cstackCOMMON 112
+__LcstackBANK0             cstackBANK0  112
+__LcstackCOMMON            cstackCOMMON 112
+__end_of___lwtoft          text2        089
+__pstrings                 strings      089
+__stringtab                strings      089
+__stringbase               strings      098
+__end_of__stringtab        strings      099
+___lwdiv                   text9        0A4
+__end_of_Lcd_Init          text13       0A4
+__ptext9                   text9        0A4
+_Lcd_Set_Cursor            text12       0E1
+__end_of___lwdiv           text9        0E1
+__ptext12                  text12       0E1
+__end_of_Lcd_Set_Cursor    text12       123
+__ptext1                   text1        123
+_readADC                   text1        123
+__end_of_readADC           text1        17D
+__ptext7                   text7        17D
+_utoa                      text7        17D
+__end_of_utoa              text7        1D9
+__pmaintext                maintext     1D9
+_main                      maintext     1D9
+__Hspace_0                 (abs)        400
+__S0                       (abs)        400
+___ftpack                  text5        235
+__end_of_main              maintext     235
+__ptext5                   text5        235
+___fttol                   text3        2A2
+__end_of___ftpack          text5        2A2
+__ptext3                   text3        2A2
+___ftmul                   text4        32F
+__end_of___fttol           text3        32F
+__ptext4                   text4        32F
+__Lcinit                   cinit        3FE
+__end_of___ftmul           text4        3FE
+__end_of__initialization   cinit        3FE
+__initialization           cinit        3FE
+__Hcinit                   cinit        400
+end_of_initialization      cinit        3FE
+start_initialization       cinit        3FE
