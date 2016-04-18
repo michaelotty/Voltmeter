@@ -1,18 +1,17 @@
-/* 
- * File:   main.c
- * Author: mo360
- *
- * Created on 18 April 2016, 15:05
- */
+#pragma config  FOSC = XT
+#pragma config  WDTE = OFF
+#pragma config  PWRTE = ON
+#pragma config  CP = OFF
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "adc.h"
+#include "lcd.h"
 
-/*
- * 
- */
-int main(int argc, char** argv) {
+#define _XTAL_FREQ  4000000
 
-    return (EXIT_SUCCESS);
+void main()
+{
+    unsigned int voltage = readADC();
+    
 }
-

@@ -5,9 +5,9 @@
 #define _XTAL_FREQ  4000000
 
 // Define the pin connections
-#define CS RA2
-#define CLK RA3
-#define DIN RA4
+#define CS 
+#define CLK RA1
+#define DIN RA2
 
 // Read a single (8-bit) sample from the ADC
 unsigned int readADC();
