@@ -5,6 +5,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <xc.h>
 #include "adc.h"
 #include "lcd.h"
 
@@ -12,6 +13,16 @@
 
 void main()
 {
-    unsigned int voltage = readADC();
+    TRISA = 0xFF;
+    TRISB = 0x00;    
     
+    RW = 0;    
+    Lcd_Init();
+    Lcd_Clear();
+    
+    unsigned int voltage = readADC();
+    Lcd_Set_Cursor(1,1);
+    
+    char *string = "Voltage: 4.111";
+    Lcd_Write_String(string);
 }

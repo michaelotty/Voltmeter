@@ -1,0 +1,146 @@
+[p LITE_MODE AUTOSTATIC PIC14 PICREGULAR PICMID ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F84A ]
+[d frameptr 6 ]
+"6 H:\dos\PIC\Voltmeter.X\adc.c
+[v _readADC readADC `(ui  1 e 2 0 ]
+"62 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\float.c
+[v ___ftpack __ftpack `(f  1 e 3 0 ]
+"86 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\ftadd.c
+[v ___ftadd __ftadd `(f  1 e 3 0 ]
+"17 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\itoa.c
+[v _utoa utoa `(*.4uc  1 e 1 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"6 C:\Program Files (x86)\Microchip\xc8\v1.35\sources\pic\eeprom.c
+[v _eecpymem eecpymem `(v  1 e 0 0 ]
+"24
+[v _memcpyee memcpyee `(v  1 e 0 0 ]
+"6 H:\dos\PIC\Voltmeter.X\lcd.c
+[v _Lcd_Port Lcd_Port `(v  1 e 0 0 ]
+"30
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 0 0 ]
+"43
+[v _Lcd_Clear Lcd_Clear `(v  1 e 0 0 ]
+"51
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 0 0 ]
+"73
+[v _Lcd_Init Lcd_Init `(v  1 e 0 0 ]
+"93
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 0 0 ]
+"110
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 0 0 ]
+"14 H:\dos\PIC\Voltmeter.X\main.c
+[v _main main `(v  1 e 0 0 ]
+"441 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f84a.h
+[v _TRISA TRISA `VEuc  1 e 1 @133 ]
+"484
+[v _TRISB TRISB `VEuc  1 e 1 @134 ]
+"628
+[v _RA1 RA1 `VEb  1 e 0 @41 ]
+"630
+[v _RA2 RA2 `VEb  1 e 0 @42 ]
+"632
+[v _RA3 RA3 `VEb  1 e 0 @43 ]
+"636
+[v _RB0 RB0 `VEb  1 e 0 @48 ]
+"638
+[v _RB1 RB1 `VEb  1 e 0 @49 ]
+"640
+[v _RB2 RB2 `VEb  1 e 0 @50 ]
+"642
+[v _RB3 RB3 `VEb  1 e 0 @51 ]
+"644
+[v _RB4 RB4 `VEb  1 e 0 @52 ]
+"646
+[v _RB5 RB5 `VEb  1 e 0 @53 ]
+"648
+[v _RB6 RB6 `VEb  1 e 0 @54 ]
+"14 H:\dos\PIC\Voltmeter.X\main.c
+[v _main main `(v  1 e 0 0 ]
+{
+"23
+[v main@voltage voltage `ui  1 a 2 13 ]
+"26
+[v main@string string `*.24uc  1 a 1 15 ]
+"28
+} 0
+"6 H:\dos\PIC\Voltmeter.X\adc.c
+[v _readADC readADC `(ui  1 e 2 0 ]
+{
+"10
+[v readADC@volt volt `ui  1 a 2 4 ]
+"9
+[v readADC@rxData rxData `uc  1 a 1 7 ]
+"8
+[v readADC@bits bits `uc  1 a 1 6 ]
+"49
+} 0
+"110 H:\dos\PIC\Voltmeter.X\lcd.c
+[v _Lcd_Write_String Lcd_Write_String `(v  1 e 0 0 ]
+{
+"112
+[v Lcd_Write_String@i i `i  1 a 2 10 ]
+"110
+[v Lcd_Write_String@a a `*.26uc  1 p 2 5 ]
+"117
+} 0
+"93
+[v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 0 0 ]
+{
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"95
+[v Lcd_Write_Char@y y `uc  1 a 1 3 ]
+[v Lcd_Write_Char@temp temp `uc  1 a 1 2 ]
+"93
+[v Lcd_Write_Char@a a `uc  1 a 1 wreg ]
+"96
+[v Lcd_Write_Char@a a `uc  1 a 1 4 ]
+"107
+} 0
+"51
+[v _Lcd_Set_Cursor Lcd_Set_Cursor `(v  1 e 0 0 ]
+{
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+"53
+[v Lcd_Set_Cursor@temp temp `uc  1 a 1 10 ]
+[v Lcd_Set_Cursor@y y `uc  1 a 1 9 ]
+[v Lcd_Set_Cursor@z z `uc  1 a 1 8 ]
+"51
+[v Lcd_Set_Cursor@a a `uc  1 a 1 wreg ]
+[v Lcd_Set_Cursor@b b `uc  1 p 1 4 ]
+"54
+[v Lcd_Set_Cursor@a a `uc  1 a 1 7 ]
+"70
+} 0
+"73
+[v _Lcd_Init Lcd_Init `(v  1 e 0 0 ]
+{
+"90
+} 0
+"43
+[v _Lcd_Clear Lcd_Clear `(v  1 e 0 0 ]
+{
+"48
+} 0
+"30
+[v _Lcd_Cmd Lcd_Cmd `(v  1 e 0 0 ]
+{
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+[v Lcd_Cmd@a a `uc  1 a 1 wreg ]
+"33
+[v Lcd_Cmd@a a `uc  1 a 1 3 ]
+"40
+} 0
+"6
+[v _Lcd_Port Lcd_Port `(v  1 e 0 0 ]
+{
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+[v Lcd_Port@a a `uc  1 a 1 wreg ]
+"8
+[v Lcd_Port@a a `uc  1 a 1 0 ]
+"27
+} 0
