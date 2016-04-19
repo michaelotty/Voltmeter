@@ -418,16 +418,10 @@ void Lcd_Shift_Right();
 
 void Lcd_Shift_Left();
 
-# 11 "main.c"
-char* floatToString()
-{
-char *str = newchar[10];
-float floatingVoltage
-}
-
+# 14 "main.c"
 void main()
 {
-TRISA = 0b00000100;
+TRISA = 0b00010100;
 TRISB = 0x00;
 
 RA3 = 1;
@@ -437,21 +431,61 @@ Lcd_Init();
 Lcd_Clear();
 
 unsigned int voltage = 5;
-float floatingVoltage = 0;
-while(1)
+while (1)
 {
-Lcd_Clear();
 
-Lcd_Set_Cursor(1,1);
+
+Lcd_Set_Cursor(1, 1);
 char *string = "Voltage:";
 
 Lcd_Write_String(string);
-Lcd_Set_Cursor(2,1);
+Lcd_Set_Cursor(2, 1);
 
-floatingVoltage = readADC() * 4.5;
-char *str = newchar[10];
-sprintf(str, "%.4g", floatingVoltage);
-Lcd_Write_String(floatingVoltage);
-_delay((unsigned long)((200)*(4000000/4000.0)));
+voltage = (readADC() * 5) / 1020;
+
+
+
+int decimal;
+decimal = ((readADC() * 5) % 1020);
+
+Lcd_Write_Int(voltage);
+Lcd_Write_Char('.');
+if (decimal < 10)
+{
+Lcd_Write_Int(0);
+Lcd_Write_Int(0);
+Lcd_Write_Int(decimal);
+}
+else if (decimal < 100)
+{
+Lcd_Write_Int(0);
+Lcd_Write_Int(decimal);
+}
+else
+{
+Lcd_Write_Int(decimal);
+}
+
+if(PORTAbits.RA4)
+{
+
+while (PORTAbits.RA4)
+{
+_delay((unsigned long)((50)*(4000000/4000.0)));
+}
+while (PORTAbits.RA4 == 0)
+{
+_delay((unsigned long)((50)*(4000000/4000.0)));
+}
+while (PORTAbits.RA4 )
+{
+_delay((unsigned long)((50)*(4000000/4000.0)));
+}
+while(PORTAbits.RA4 == 0)
+{
+_delay((unsigned long)((50)*(4000000/4000.0)));
+}
+
+}
 }
 }
