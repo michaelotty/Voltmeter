@@ -8,7 +8,7 @@
 #define CLK		RA1
 #define CS		RA3
 
-unsigned * DIN;
+unsigned int * DIN;
 
 // Read a single (8-bit) sample from the ADC
 unsigned int readADC(unsigned int inputPin);

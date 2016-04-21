@@ -7,9 +7,9 @@
 unsigned int readADC(unsigned int inputPin) {
     switch (inputPin) {
         case 0:
-            DIN = PORTAbits.RA3;
+            *DIN = (int)(&((PORTAbits*)(0))->RA2);
         case 1:
-            DIN = PORTAbits.RA4;
+            *DIN = (int)(&((PORTBbits*)(0))->RB4);
         default:
             return 0;
     }
