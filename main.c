@@ -71,7 +71,7 @@ void main() {
         Lcd_Write_Char('1');
         Lcd_Write_Char(':');
 
-        WriteVoltage(readADC());
+        WriteVoltage(readADC(0));
 
         __delay_ms(20);
         if (BUTTON) {
