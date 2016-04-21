@@ -13,26 +13,26 @@
 
 void WriteVoltage(unsigned int vTemp)
 {
-    	unsigned int voltage = 5;
-        voltage = (vTemp * 5) / 1020;
-        unsigned int decimal = ((vTemp * 5) % 1020);
-        Lcd_Write_Int(voltage);
-        Lcd_Write_Char('.');
-        if (decimal < 10)
-        {
-            Lcd_Write_Char('0');
-            Lcd_Write_Char('0');
-            Lcd_Write_Int(decimal);
-        }
-        else if (decimal < 100)
-        {
-            Lcd_Write_Char('0');
-            Lcd_Write_Int(decimal);
-        }
-        else
-        {
-           Lcd_Write_Int(decimal);
-        }
+    unsigned int voltage = 5;
+    voltage = (vTemp * 5) / 1020;
+    unsigned int decimal = (vTemp * 5) % 1020;
+    Lcd_Write_Int(voltage);
+    Lcd_Write_Char('.');
+    if (decimal < 10)
+    {
+        Lcd_Write_Char('0');
+        Lcd_Write_Char('0');
+        Lcd_Write_Int(decimal);
+    }
+    else if (decimal < 100)
+    {
+        Lcd_Write_Char('0');
+        Lcd_Write_Int(decimal);
+    }
+    else
+    {
+       Lcd_Write_Int(decimal);
+    }
 }
 
 //void interrupt isr()
@@ -60,7 +60,8 @@ void main()
 	Lcd_Clear();
     
    Lcd_Write_String("Welcome! The range is 0V to 5V");
-   int i =0;
+   
+   short int i =0;
    while(i < 30)
    {
        __delay_ms(250);
