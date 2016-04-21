@@ -1,4 +1,8 @@
 Version 3.2 HI-TECH Software Intermediate Code
+"45 lcd.h
+[v _Lcd_Write_Int `(v ~T0 @X0 0 ef1`ui ]
+"39
+[v _Lcd_Write_Char `(v ~T0 @X0 0 ef1`uc ]
 [p mainexit ]
 "441 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f84a.h
 [v _TRISA `Vuc ~T0 @X0 0 e@133 ]
@@ -14,28 +18,20 @@ Version 3.2 HI-TECH Software Intermediate Code
 [v _Lcd_Init `(v ~T0 @X0 0 ef ]
 "30
 [v _Lcd_Clear `(v ~T0 @X0 0 ef ]
-"33
-[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
 "42
 [v _Lcd_Write_String `(v ~T0 @X0 0 ef1`*uc ]
-"13 adc.h
-[v _readADC `(ui ~T0 @X0 0 ef ]
-"45 lcd.h
-[v _Lcd_Write_Int `(v ~T0 @X0 0 ef1`ui ]
-"39
-[v _Lcd_Write_Char `(v ~T0 @X0 0 ef1`uc ]
-"166 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f84a.h
-[s S7 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S7 . RA0 RA1 RA2 RA3 RA4 ]
-"165
-[u S6 `S7 1 ]
-[n S6 . . ]
-"174
-[v _PORTAbits `VS6 ~T0 @X0 0 e@5 ]
 [v F278 `(v ~T0 @X0 1 tf1`ul ]
 "150 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic.h
 [v __delay `JF278 ~T0 @X0 0 e ]
 [p i __delay ]
+"49 lcd.h
+[v _Lcd_Shift_Left `(v ~T0 @X0 0 ef ]
+"33
+[v _Lcd_Set_Cursor `(v ~T0 @X0 0 ef2`uc`uc ]
+"13 adc.h
+[v _readADC `(ui ~T0 @X0 0 ef ]
+"636 C:\Program Files (x86)\Microchip\xc8\v1.35\include\pic16f84a.h
+[v _RB0 `Vb ~T0 @X0 0 e@48 ]
 "1 main.c
 [p x FOSC=XT ]
 "2
@@ -316,210 +312,225 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;lcd.h: 47: void Lcd_Shift_Right();
 [; ;lcd.h: 49: void Lcd_Shift_Left();
 "14 main.c
-[v _main `(v ~T0 @X0 1 ef ]
+[v _WriteVoltage `(v ~T0 @X0 1 ef1`ui ]
 "15
 {
-[; ;main.c: 14: void main()
+[; ;main.c: 14: void WriteVoltage(unsigned int vTemp)
 [; ;main.c: 15: {
+[e :U _WriteVoltage ]
+"14
+[v _vTemp `ui ~T0 @X0 1 r1 ]
+"15
+[f ]
+"16
+[v _voltage `ui ~T0 @X0 1 a ]
+[; ;main.c: 16: unsigned int voltage = 5;
+[e = _voltage -> -> 5 `i `ui ]
+[; ;main.c: 17: voltage = (vTemp * 5) / 1020;
+"17
+[e = _voltage / * _vTemp -> -> 5 `i `ui -> -> 1020 `i `ui ]
+"18
+[v _decimal `ui ~T0 @X0 1 a ]
+[; ;main.c: 18: unsigned int decimal = ((vTemp * 5) % 1020);
+[e = _decimal % * _vTemp -> -> 5 `i `ui -> -> 1020 `i `ui ]
+[; ;main.c: 19: Lcd_Write_Int(voltage);
+"19
+[e ( _Lcd_Write_Int (1 _voltage ]
+[; ;main.c: 20: Lcd_Write_Char('.');
+"20
+[e ( _Lcd_Write_Char (1 -> -> 46 `ui `uc ]
+[; ;main.c: 21: if (decimal < 10)
+"21
+[e $ ! < _decimal -> -> 10 `i `ui 25  ]
+[; ;main.c: 22: {
+"22
+{
+[; ;main.c: 23: Lcd_Write_Char('0');
+"23
+[e ( _Lcd_Write_Char (1 -> -> 48 `ui `uc ]
+[; ;main.c: 24: Lcd_Write_Char('0');
+"24
+[e ( _Lcd_Write_Char (1 -> -> 48 `ui `uc ]
+[; ;main.c: 25: Lcd_Write_Int(decimal);
+"25
+[e ( _Lcd_Write_Int (1 _decimal ]
+"26
+}
+[; ;main.c: 26: }
+[e $U 26  ]
+"27
+[e :U 25 ]
+[; ;main.c: 27: else if (decimal < 100)
+[e $ ! < _decimal -> -> 100 `i `ui 27  ]
+[; ;main.c: 28: {
+"28
+{
+[; ;main.c: 29: Lcd_Write_Char('0');
+"29
+[e ( _Lcd_Write_Char (1 -> -> 48 `ui `uc ]
+[; ;main.c: 30: Lcd_Write_Int(decimal);
+"30
+[e ( _Lcd_Write_Int (1 _decimal ]
+"31
+}
+[; ;main.c: 31: }
+[e $U 28  ]
+"32
+[e :U 27 ]
+[; ;main.c: 32: else
+[; ;main.c: 33: {
+"33
+{
+[; ;main.c: 34: Lcd_Write_Int(decimal);
+"34
+[e ( _Lcd_Write_Int (1 _decimal ]
+"35
+}
+[e :U 28 ]
+[e :U 26 ]
+[; ;main.c: 35: }
+[; ;main.c: 36: }
+"36
+[e :UE 24 ]
+}
+"49
+[v _main `(v ~T0 @X0 1 ef ]
+"50
+{
+[; ;main.c: 49: void main()
+[; ;main.c: 50: {
 [e :U _main ]
 [f ]
-[; ;main.c: 16: TRISA = 0b00010100;
-"16
-[e = _TRISA -> -> 20 `i `uc ]
-[; ;main.c: 17: TRISB = 0x00;
-"17
-[e = _TRISB -> -> 0 `i `uc ]
-[; ;main.c: 19: RA3 = 1;
-"19
-[e = _RA3 -> -> 1 `i `b ]
-[; ;main.c: 20: RA1 = 0;
-"20
-[e = _RA1 -> -> 0 `i `b ]
-[; ;main.c: 21: RB5 = 0;
-"21
-[e = _RB5 -> -> 0 `i `b ]
-[; ;main.c: 22: Lcd_Init();
-"22
-[e ( _Lcd_Init ..  ]
-[; ;main.c: 23: Lcd_Clear();
-"23
-[e ( _Lcd_Clear ..  ]
-"25
-[v _voltage `ui ~T0 @X0 1 a ]
-[; ;main.c: 25: unsigned int voltage = 5;
-[e = _voltage -> -> 5 `i `ui ]
-[; ;main.c: 26: while (1)
-"26
-[e :U 26 ]
-[; ;main.c: 27: {
-"27
-{
-[; ;main.c: 30: Lcd_Set_Cursor(1, 1);
-"30
-[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
-"31
-[v _string `*uc ~T0 @X0 1 a ]
-[; ;main.c: 31: char *string = "Voltage:";
-[e = _string -> :s 1C `*uc ]
-[; ;main.c: 33: Lcd_Write_String(string);
-"33
-[e ( _Lcd_Write_String (1 _string ]
-[; ;main.c: 34: Lcd_Set_Cursor(2, 1);
-"34
-[e ( _Lcd_Set_Cursor (2 , -> -> 2 `i `uc -> -> 1 `i `uc ]
-[; ;main.c: 36: voltage = (readADC() * 5) / 1020;
-"36
-[e = _voltage / * ( _readADC ..  -> -> 5 `i `ui -> -> 1020 `i `ui ]
-"40
-[v _decimal `i ~T0 @X0 1 a ]
-[; ;main.c: 40: int decimal;
-[; ;main.c: 41: decimal = ((readADC() * 5) % 1020);
-"41
-[e = _decimal -> % * ( _readADC ..  -> -> 5 `i `ui -> -> 1020 `i `ui `i ]
-[; ;main.c: 43: Lcd_Write_Int(voltage);
-"43
-[e ( _Lcd_Write_Int (1 _voltage ]
-[; ;main.c: 44: Lcd_Write_Char('.');
-"44
-[e ( _Lcd_Write_Char (1 -> -> 46 `ui `uc ]
-[; ;main.c: 45: if (decimal < 10)
-"45
-[e $ ! < _decimal -> 10 `i 28  ]
-[; ;main.c: 46: {
-"46
-{
-[; ;main.c: 47: Lcd_Write_Int(0);
-"47
-[e ( _Lcd_Write_Int (1 -> -> 0 `i `ui ]
-[; ;main.c: 48: Lcd_Write_Int(0);
-"48
-[e ( _Lcd_Write_Int (1 -> -> 0 `i `ui ]
-[; ;main.c: 49: Lcd_Write_Int(decimal);
-"49
-[e ( _Lcd_Write_Int (1 -> _decimal `ui ]
-"50
-}
-[; ;main.c: 50: }
-[e $U 29  ]
+[; ;main.c: 51: TRISA = 0b00000100;
 "51
-[e :U 28 ]
-[; ;main.c: 51: else if (decimal < 100)
-[e $ ! < _decimal -> 100 `i 30  ]
-[; ;main.c: 52: {
+[e = _TRISA -> -> 4 `i `uc ]
+[; ;main.c: 52: TRISB = 0b00000001;
 "52
-{
-[; ;main.c: 53: Lcd_Write_Int(0);
-"53
-[e ( _Lcd_Write_Int (1 -> -> 0 `i `ui ]
-[; ;main.c: 54: Lcd_Write_Int(decimal);
-"54
-[e ( _Lcd_Write_Int (1 -> _decimal `ui ]
-"55
-}
-[; ;main.c: 55: }
-[e $U 31  ]
+[e = _TRISB -> -> 1 `i `uc ]
+[; ;main.c: 56: RA3 = 1;
 "56
-[e :U 30 ]
-[; ;main.c: 56: else
-[; ;main.c: 57: {
+[e = _RA3 -> -> 1 `i `b ]
+[; ;main.c: 57: RA1 = 0;
 "57
-{
-[; ;main.c: 58: Lcd_Write_Int(decimal);
+[e = _RA1 -> -> 0 `i `b ]
+[; ;main.c: 58: RB5 = 0;
 "58
-[e ( _Lcd_Write_Int (1 -> _decimal `ui ]
+[e = _RB5 -> -> 0 `i `b ]
+[; ;main.c: 59: Lcd_Init();
 "59
-}
-[e :U 31 ]
-[e :U 29 ]
-[; ;main.c: 59: }
-[; ;main.c: 61: if(PORTAbits.RA4)
-"61
-[e $ ! != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i 32  ]
-[; ;main.c: 62: {
+[e ( _Lcd_Init ..  ]
+[; ;main.c: 60: Lcd_Clear();
+"60
+[e ( _Lcd_Clear ..  ]
+[; ;main.c: 62: Lcd_Write_String("Welcome! The range is 0V to 5V");
 "62
-{
-[; ;main.c: 64: while (PORTAbits.RA4)
+[e ( _Lcd_Write_String (1 -> :s 1C `*uc ]
+"63
+[v _i `i ~T0 @X0 1 a ]
+[; ;main.c: 63: int i =0;
+[e = _i -> 0 `i ]
+[; ;main.c: 64: while(i < 30)
 "64
-[e $U 33  ]
-[e :U 34 ]
+[e $U 30  ]
+[e :U 31 ]
 [; ;main.c: 65: {
 "65
 {
-[; ;main.c: 66: _delay((unsigned long)((50)*(4000000/4000.0)));
+[; ;main.c: 66: _delay((unsigned long)((250)*(4000000/4000.0)));
 "66
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e ( __delay (1 -> * -> -> 250 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 67: Lcd_Shift_Left();
 "67
-}
-[e :U 33 ]
-"64
-[e $ != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i 34  ]
-[e :U 35 ]
-[; ;main.c: 67: }
-[; ;main.c: 68: while (PORTAbits.RA4 == 0)
+[e ( _Lcd_Shift_Left ..  ]
+[; ;main.c: 68: i++;
 "68
-[e $U 36  ]
-[e :U 37 ]
-[; ;main.c: 69: {
+[e ++ _i -> 1 `i ]
 "69
-{
-[; ;main.c: 70: _delay((unsigned long)((50)*(4000000/4000.0)));
+}
+[e :U 30 ]
+"64
+[e $ < _i -> 30 `i 31  ]
+[e :U 32 ]
+[; ;main.c: 69: }
+[; ;main.c: 70: while (1)
 "70
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[e :U 34 ]
+[; ;main.c: 71: {
 "71
+{
+[; ;main.c: 73: Lcd_Clear();
+"73
+[e ( _Lcd_Clear ..  ]
+[; ;main.c: 74: Lcd_Set_Cursor(1,1);
+"74
+[e ( _Lcd_Set_Cursor (2 , -> -> 1 `i `uc -> -> 1 `i `uc ]
+[; ;main.c: 75: Lcd_Write_Char('V');
+"75
+[e ( _Lcd_Write_Char (1 -> -> 86 `ui `uc ]
+[; ;main.c: 76: Lcd_Write_Char('1');
+"76
+[e ( _Lcd_Write_Char (1 -> -> 49 `ui `uc ]
+[; ;main.c: 77: Lcd_Write_Char(':');
+"77
+[e ( _Lcd_Write_Char (1 -> -> 58 `ui `uc ]
+[; ;main.c: 79: WriteVoltage(readADC());
+"79
+[e ( _WriteVoltage (1 ( _readADC ..  ]
+[; ;main.c: 80: _delay((unsigned long)((20)*(4000000/4000.0)));
+"80
+[e ( __delay (1 -> * -> -> 20 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 81: if(RB0 == 1)
+"81
+[e $ ! == -> _RB0 `i -> 1 `i 36  ]
+[; ;main.c: 82: {
+"82
+{
+[; ;main.c: 83: while(1)
+"83
+[e :U 38 ]
+[; ;main.c: 84: {
+"84
+{
+[; ;main.c: 85: _delay((unsigned long)((100)*(4000000/4000.0)));
+"85
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 86: if(RB0 == 1)
+"86
+[e $ ! == -> _RB0 `i -> 1 `i 40  ]
+[; ;main.c: 87: {
+"87
+{
+[; ;main.c: 88: _delay((unsigned long)((100)*(4000000/4000.0)));
+"88
+[e ( __delay (1 -> * -> -> 100 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
+[; ;main.c: 89: break;
+"89
+[e $U 39  ]
+"90
+}
+[e :U 40 ]
+"91
+}
+[e :U 37 ]
+"83
+[e $U 38  ]
+[e :U 39 ]
+"92
 }
 [e :U 36 ]
-"68
-[e $ == -> . . _PORTAbits 0 4 `i -> 0 `i 37  ]
-[e :U 38 ]
-[; ;main.c: 71: }
-[; ;main.c: 72: while (PORTAbits.RA4 )
-"72
-[e $U 39  ]
-[e :U 40 ]
-[; ;main.c: 73: {
-"73
-{
-[; ;main.c: 74: _delay((unsigned long)((50)*(4000000/4000.0)));
-"74
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"75
+"94
 }
-[e :U 39 ]
-"72
-[e $ != -> . . _PORTAbits 0 4 `i -> -> -> 0 `i `Vuc `i 40  ]
-[e :U 41 ]
-[; ;main.c: 75: }
-[; ;main.c: 76: while(PORTAbits.RA4 == 0)
-"76
-[e $U 42  ]
-[e :U 43 ]
-[; ;main.c: 77: {
-"77
-{
-[; ;main.c: 78: _delay((unsigned long)((50)*(4000000/4000.0)));
-"78
-[e ( __delay (1 -> * -> -> 50 `i `d / -> -> 4000000 `l `d .4000.0 `ul ]
-"79
+[e :U 33 ]
+"70
+[e $U 34  ]
+[e :U 35 ]
+[; ;main.c: 90: }
+[; ;main.c: 91: }
+[; ;main.c: 92: }
+[; ;main.c: 94: }
+[; ;main.c: 95: }
+"95
+[e :UE 29 ]
 }
-[e :U 42 ]
-"76
-[e $ == -> . . _PORTAbits 0 4 `i -> 0 `i 43  ]
-[e :U 44 ]
-"81
-}
-[e :U 32 ]
-"82
-}
-[e :U 25 ]
-"26
-[e $U 26  ]
-[e :U 27 ]
-[; ;main.c: 79: }
-[; ;main.c: 81: }
-[; ;main.c: 82: }
-[; ;main.c: 83: }
-"83
-[e :UE 24 ]
-}
-[a 1C 86 111 108 116 97 103 101 58 0 ]
+[a 1C 87 101 108 99 111 109 101 33 32 84 104 101 32 114 97 110 103 101 32 105 115 32 48 86 32 116 111 32 53 86 0 ]
 

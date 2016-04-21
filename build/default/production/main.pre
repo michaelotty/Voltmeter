@@ -419,10 +419,37 @@ void Lcd_Shift_Right();
 void Lcd_Shift_Left();
 
 # 14 "main.c"
+void WriteVoltage(unsigned int vTemp)
+{
+unsigned int voltage = 5;
+voltage = (vTemp * 5) / 1020;
+unsigned int decimal = ((vTemp * 5) % 1020);
+Lcd_Write_Int(voltage);
+Lcd_Write_Char('.');
+if (decimal < 10)
+{
+Lcd_Write_Char('0');
+Lcd_Write_Char('0');
+Lcd_Write_Int(decimal);
+}
+else if (decimal < 100)
+{
+Lcd_Write_Char('0');
+Lcd_Write_Int(decimal);
+}
+else
+{
+Lcd_Write_Int(decimal);
+}
+}
+
+# 49
 void main()
 {
-TRISA = 0b00010100;
-TRISB = 0x00;
+TRISA = 0b00000100;
+TRISB = 0b00000001;
+
+
 
 RA3 = 1;
 RA1 = 0;
@@ -430,62 +457,37 @@ RB5 = 0;
 Lcd_Init();
 Lcd_Clear();
 
-unsigned int voltage = 5;
+Lcd_Write_String("Welcome! The range is 0V to 5V");
+int i =0;
+while(i < 30)
+{
+_delay((unsigned long)((250)*(4000000/4000.0)));
+Lcd_Shift_Left();
+i++;
+}
 while (1)
 {
 
+Lcd_Clear();
+Lcd_Set_Cursor(1,1);
+Lcd_Write_Char('V');
+Lcd_Write_Char('1');
+Lcd_Write_Char(':');
 
-Lcd_Set_Cursor(1, 1);
-char *string = "Voltage:";
-
-Lcd_Write_String(string);
-Lcd_Set_Cursor(2, 1);
-
-voltage = (readADC() * 5) / 1020;
-
-
-
-int decimal;
-decimal = ((readADC() * 5) % 1020);
-
-Lcd_Write_Int(voltage);
-Lcd_Write_Char('.');
-if (decimal < 10)
+WriteVoltage(readADC());
+_delay((unsigned long)((20)*(4000000/4000.0)));
+if(RB0 == 1)
 {
-Lcd_Write_Int(0);
-Lcd_Write_Int(0);
-Lcd_Write_Int(decimal);
+while(1)
+{
+_delay((unsigned long)((100)*(4000000/4000.0)));
+if(RB0 == 1)
+{
+_delay((unsigned long)((100)*(4000000/4000.0)));
+break;
 }
-else if (decimal < 100)
-{
-Lcd_Write_Int(0);
-Lcd_Write_Int(decimal);
 }
-else
-{
-Lcd_Write_Int(decimal);
 }
 
-if(PORTAbits.RA4)
-{
-
-while (PORTAbits.RA4)
-{
-_delay((unsigned long)((50)*(4000000/4000.0)));
-}
-while (PORTAbits.RA4 == 0)
-{
-_delay((unsigned long)((50)*(4000000/4000.0)));
-}
-while (PORTAbits.RA4 )
-{
-_delay((unsigned long)((50)*(4000000/4000.0)));
-}
-while(PORTAbits.RA4 == 0)
-{
-_delay((unsigned long)((50)*(4000000/4000.0)));
-}
-
-}
 }
 }
