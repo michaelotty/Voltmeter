@@ -6,8 +6,9 @@
 
 // Define the pin connections
 #define CLK RA1
-#define DIN RA2
+#define DIN1 RA2
+#define DIN2 RB3
 #define CS RA3
 
 // Read a single (8-bit) sample from the ADC
-unsigned int readADC();
+unsigned int readADC(int c);
