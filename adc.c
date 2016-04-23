@@ -1,13 +1,15 @@
 #include "adc.h"
 #include <xc.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 // Read a single sample from the ADC
-unsigned int readADC()
+unsigned int readADC(int selectedADC)
 {
   unsigned char bits;
   unsigned char rxData = 0;
   unsigned int volt = 0;
+  
   // Pull CS low
   CS = 0;
 
@@ -21,25 +23,46 @@ unsigned int readADC()
   }
 
   // Read in the 8 MSBs, ignore the two lower bits
-  for (bits = 0; bits < 8; bits++) 
-  {
-    // Delay before we raise the clock
-    __delay_us(100);
-    CLK = 1;
-    
-    // Read in the next bit, shift up by one bit
-    rxData = rxData << 1;
-    
-    // Set or clear based on pin value
-    if(DIN == 1)
-      rxData = rxData | 0x01;
-    else
-      rxData = rxData & 0xfe;
-    
-    __delay_us(100);
-    CLK = 0;
+    switch (selectedADC) {
+        case 0:
+            for (bits = 0; bits < 8; bits++) {
+                // Delay before we raise the clock
+                __delay_us(100);
+                CLK = 1;
+
+                // Read in the next bit, shift up by one bit
+                rxData = rxData << 1;
+
+                // Set or clear based on pin value
+                if (DIN0 == 1)
+                    rxData = rxData | 0x01;
+                else
+                    rxData = rxData & 0xfe;
+
+                __delay_us(100);
+                CLK = 0;
+            }
+            break;
+        case 1:
+            for (bits = 0; bits < 8; bits++) {
+                // Delay before we raise the clock
+                __delay_us(100);
+                CLK = 1;
+
+                // Read in the next bit, shift up by one bit
+                rxData = rxData << 1;
+
+                // Set or clear based on pin value
+                if (DIN1 == 1)
+                    rxData = rxData | 0x01;
+                else
+                    rxData = rxData & 0xfe;
+
+                __delay_us(100);
+                CLK = 0;
+            }
+            break;
     }
-  
   // Clear the CS bit
   CS = 1;
   
