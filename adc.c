@@ -3,15 +3,16 @@
 #include <xc.h>
 #include <stdlib.h>
 #include <stdbool.h>
-//#define DIN RA2
-unsigned char bits;
+
+//unsigned char bits;
 unsigned char rxData = 0;
 // Read a single sample from the ADC
-unsigned int readADC(int c)
+unsigned int readADC(int selectedADC)
 {
   unsigned char bits;
   unsigned char rxData = 0;
   unsigned int volt = 0;
+  
   // Pull CS low
   CS = 0;
 
@@ -25,7 +26,7 @@ unsigned int readADC(int c)
   }
 
   // Read in the 8 MSBs, ignore the two lower bits
-    switch (c) {
+    switch (selectedADC) {
         case 0:
             for (bits = 0; bits < 8; bits++) {
                 // Delay before we raise the clock
@@ -36,7 +37,7 @@ unsigned int readADC(int c)
                 rxData = rxData << 1;
 
                 // Set or clear based on pin value
-                if (DIN1 == 1)
+                if (DIN0 == 1)
                     rxData = rxData | 0x01;
                 else
                     rxData = rxData & 0xfe;
@@ -55,7 +56,7 @@ unsigned int readADC(int c)
                 rxData = rxData << 1;
 
                 // Set or clear based on pin value
-                if (DIN2 == 1)
+                if (DIN1 == 1)
                     rxData = rxData | 0x01;
                 else
                     rxData = rxData & 0xfe;
