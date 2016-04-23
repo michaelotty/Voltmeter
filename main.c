@@ -10,8 +10,8 @@
 #include "lcd.h"
 
 #define _XTAL_FREQ  4000000
-#define HOLD RA4
-#define MAX RB2
+#define HOLD_BUTTON RA4
+#define MAX_BUTTON RB2
 
 /**************Initialise the LCD and write the welcome message****************/
 void init()
@@ -26,11 +26,12 @@ void init()
 /******Converts the data from the ADC and displays on the LCD as a float******/
 void WriteVoltage(unsigned int vTemp)
 {
-    unsigned int voltage;
-    voltage = (vTemp * 5) / 1020; //Calculate integer part of the voltage
+    unsigned int voltage = (vTemp * 5) / 1020; //Calculate integer part of the voltage
     unsigned int decimal = (vTemp * 5) % 1020; //Calculate decimal part
+    
     Lcd_Write_Int(voltage); //Write integer
     Lcd_Write_Char('.'); //Write decimal point
+    
     if (decimal < 10/*or maybe 100*/) //Add 0 in front of any int smaller than 
         //100 as if an int has any 0s in front of it, they will be ignored.
     {
@@ -50,9 +51,9 @@ void WriteVoltage(unsigned int vTemp)
 }
 
 /******************************Button debounce*********************************/
-void debounce()
+void Debounce()
 {
-    while (HOLD) 
+    while (HOLD_BUTTON) 
     {
         __delay_us(10); //Waits until user removes finger from the button
     }
@@ -71,14 +72,14 @@ void ScrollText()
 }
 
 /******************Stores the maximum value of readADC() so far****************/
-int Maximum(int Value)
+int Maximum(int value)
 {
-    int Max = 0;
-    if (Value > Max) //If the current value is greater than the old value
+    int max = 0;
+    if (value > max) //If the current value is greater than the old value
     {
-        Max = Value; //Replace the old value with the new one
+        max = value; //Replace the old value with the new one
     }
-    return Max; //Return with the value of 'Max'
+    return max; //Return with the value of 'Max'
 }
 
 /*******************************MAIN FUNCTION**********************************/
@@ -102,51 +103,51 @@ void main() {
         Lcd_Write_Char(':');
         WriteVoltage(readADC(0)); //Convert value of readADC to float and display
         //on LCD
-        int Max = Maximum(readADC(0)); //Check if this is maximum value so far
+        int max = Maximum(readADC(0)); //Check if this is maximum value so far
         
 
         Lcd_Set_Cursor(2, 1); //Write to second half if LCD
         Lcd_Write_Char('V');
         Lcd_Write_Char(':');
         WriteVoltage(readADC(1)); //Read voltage from the second ADC
-        int Max = Maximum(readADC(1));
+        int max = Maximum(readADC(1));
         __delay_ms(50);
 
         
         
 /********************************Hold Button***********************************/        
-        if (HOLD) //If the HOLD button is pushed
+        if (HOLD_BUTTON) //If the HOLD button is pushed
         {
-            debounce(); //Wait till user stops pushing the button
+            Debounce(); //Wait till user stops pushing the button
             while (1) //Pause so that current value stays on the display
             {
-//                if (MAX) //If the MAX button is pushed, it stores the current
+//                if (MAX_BUTTON) //If the MAX button is pushed, it stores the current
 //                    //value
 //                {
-//                    debounce();
+//                    Debounce();
 //                    int sample;
 //                    sample = readADC(0); //Save the value to 'sample'
 //                    sample = readADC(1);         
 //                    
 //                }
-                if (HOLD) //If the HOLD button is pushed again 
+                if (HOLD_BUTTON) //If the HOLD button is pushed again 
                 {
-                    debounce(); //Wait till user stops pushing the button
+                    Debounce(); //Wait till user stops pushing the button
                     break; //Break out of while loop
                 }
             }
         }
         
 /********************************Max Button************************************/
-        if (MAX) //If the MAX button is pushed
+        if (MAX_BUTTON) //If the MAX button is pushed
         {
-            debounce();
+            Debounce();
             while (1) 
             {
-                WriteVoltage(Max); //Display the value of max on the LCD
-//                if (HOLD) //If the HOLD button is pushed 
+                WriteVoltage(max); //Display the value of max on the LCD
+//                if (HOLD_BUTTON) //If the HOLD button is pushed 
 //                {
-//                    debounce();
+//                    Debounce();
 //                    int sample;
 //                    WriteVoltage(sample); //Write the stored value on the LCD, 
 //                    //if there is no stored value, sample will be 0
@@ -154,9 +155,9 @@ void main() {
 //                  //  sample = eeprom_read (address);    // Reading the value from address 0xE5
 //                }
 
-                if (MAX) //If the MAX button is pushed again
+                if (MAX_BUTTON) //If the MAX button is pushed again
                 {
-                    debounce();
+                    Debounce();
                     break; //Break out of while loop
                 }
             }
