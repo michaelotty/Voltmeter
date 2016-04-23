@@ -119,7 +119,7 @@ void Lcd_Write_String(char *a)
 // Write an int
 void Lcd_Write_Int(unsigned int a)
 {
-    char temp[16];
+    char temp[8];
     utoa((char*)temp, a, 10);
     Lcd_Write_String(temp);
 }
