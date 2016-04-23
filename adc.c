@@ -1,11 +1,8 @@
-
 #include "adc.h"
 #include <xc.h>
 #include <stdlib.h>
 #include <stdbool.h>
 
-//unsigned char bits;
-unsigned char rxData = 0;
 // Read a single sample from the ADC
 unsigned int readADC(int selectedADC)
 {
@@ -73,4 +70,3 @@ unsigned int readADC(int selectedADC)
   volt = (rxData << 2);
   return volt;
 }
-
