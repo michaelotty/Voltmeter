@@ -16,7 +16,7 @@
 
 unsigned int StoredVoltage1;
 unsigned int StoredVoltage2;
-unsigned int Max = 0;
+unsigned int max = 0;
 unsigned int integer;
 int hasTimerStarted = 0; //Checks if the timer has started
 int counter = 0; //Counter for the timer
@@ -36,7 +36,7 @@ void interrupt isr()
 }
 
 /**************Initialise the LCD and write the welcome message****************/
-void init() 
+void Init() 
 {
     Lcd_Init();
     Lcd_Clear(); //Clear the LCD
@@ -79,12 +79,12 @@ void CalculateAndWrite(unsigned int rawValue)
 /******************Stores the maximum value of readADC() so far****************/
 int Maximum(int currentValue) 
 {
-    extern unsigned int Max;
-    if (currentValue > Max) //If the current value is greater than the old value
+    extern unsigned int max;
+    if (currentValue > max) //If the current value is greater than the old value
     {
-        Max= currentValue; //Replace the old value with the new one
+        max = currentValue; //Replace the old value with the new one
     }
-    return Max; //Return with the value of 'Max'
+    return max; //Return with the value of 'Max'
 }
 
 /************************************Buzzer************************************/
@@ -117,7 +117,7 @@ void Buzzer(unsigned int threshold)
 }
 
 /**************************Display the elapsed count***************************/
-void elapsedTime() 
+void ElapsedTime() 
 {
     Lcd_Clear();
     Lcd_Write_String("Count:");
@@ -136,7 +136,7 @@ void Debounce()
         if (MAX_BUTTON) //If the user holds down the MAX button while holding 
             //down the HOLD button, the elapsed count will be displayed
         {
-            elapsedTime(); 
+            ElapsedTime(); 
         }
         __delay_us(10); //Waits until user removes finger from the button
     }
@@ -150,14 +150,14 @@ void Debounce()
 void main() 
 {
     extern unsigned int integer;
-    extern unsigned int Max;
+    extern unsigned int max;
     extern int counter;
     
     TRISA = 0b00010100; //Set up RA2 & RA4 as inputs 
     TRISB = 0b00000100; //Set up RB3 as input
 
     CLK = 0;
-    init(); //Initialise
+    Init(); //Initialise
     
 /*********************************Main Loop************************************/    
     while (1) 
@@ -170,7 +170,7 @@ void main()
         CS1 = 0; //Turn on chip select for ADC1
         CalculateAndWrite(readADC()); //Convert value of readADC to float and display
         //on LCD
-        Max = Maximum(readADC()); //check if this is maximum value so far
+        max = Maximum(readADC()); //check if this is maximum value so far
         Buzzer(integer); //Check if voltage is less than 2 
         CS1 = 1;
 
@@ -180,7 +180,7 @@ void main()
 
         CS2 = 0; //Turn on Chip Select for ADC2
         CalculateAndWrite(readADC()); //Read integer from the second ADC
-        Max = Maximum(readADC());
+        max = Maximum(readADC());
         Buzzer(integer);
         CS2 = 1;
         __delay_ms(50);
@@ -218,9 +218,12 @@ void main()
         if (MAX_BUTTON) //If the MAX button is pushed
         {
             Debounce();
-            while (1) {
+            while (1) 
+            {
                 Lcd_Clear();
-                CalculateAndWrite(Max); //Display the value of max on the LCD
+                Lcd_Write_Char('M');
+                Lcd_Write_Char(':');
+                CalculateAndWrite(max); //Display the value of max on the LCD
                 if (HOLD_BUTTON) //If the HOLD button is pushed 
                 {
                     Debounce();
@@ -228,11 +231,15 @@ void main()
                     Lcd_Write_String("loading");
                     __delay_ms(500);
                     Lcd_Clear();
+                    Lcd_Write_Char('V');
+                    Lcd_Write_Char(':');
                     CalculateAndWrite(StoredVoltage1); //Write the stored value
                     //on the LCD, 
                     Lcd_Set_Cursor(2, 1);
+                    Lcd_Write_Char('V');
+                    Lcd_Write_Char(':');
                     CalculateAndWrite(StoredVoltage2);
-                    __delay_ms(1000);
+                    __delay_ms(2500);
                 }
 
                 if (MAX_BUTTON) //If the MAX button is pushed again
