@@ -21,21 +21,22 @@ unsigned int StoredVoltage1;
 unsigned int StoredVoltage2;
 unsigned int Max = 0; 
 unsigned int voltage;
+int hasTimerStarted = 0;
 
 int counter = 0; //Counter for the timer
 
 /*********************************Timer Interrupt******************************/
 //When the TMR0 register overflows (goes over 255), the interrupt is triggered
-//void interrupt isr()
-//{
-//    extern int counter;
-//    if(T0IF)
-//    {
-//        counter++; //Add 1 to counter which can be used to calculate number of 
-//        //seconds that have passed
-//        T0IF = 0;
-//    }
-//}
+void interrupt isr()
+{
+    extern int counter;
+    if(T0IF)
+    {
+        counter++; //Add 1 to counter which can be used to calculate number of 
+        //seconds that have passed
+        T0IF = 0;
+    }
+}
 
 /**************Initialise the LCD and write the welcome message****************/
 void init() 
@@ -89,37 +90,51 @@ void Buzzer(unsigned int threshold) {
     if (threshold < 2) //If readADC() falls under 500 (about 2.5V)
         //                    //the buzzer will sound
     {
-        //                    if(!hasTimerStarted) //Checks if the timer has been started
-        //                        //before. 
-        //                    {
-        //                        TMR0 = 0; //Reset timer
-        //                        counter = 0;
-        //                        OPTION_REGbits.T0CS = 0; //Set TMR0 to increase once
-        //                        //every instruction
-        //                        INTCONbits.T0IE = 1; //Enable timer overflow interrupt
-        //                        OPTION_REGbits.INTEDG = 0; //Falling edge trigger
-        //                         INTCONbits. GIE = 1; //Enable global interrupt
-        //                        hasTimerStarted = !hasTimerStarted;
-        //                    }
+                            if(!hasTimerStarted) //Checks if the timer has been started
+                                //before. 
+                            {
+                                TMR0 = 0; //Reset timer
+                                counter = 0;
+                                OPTION_REGbits.T0CS = 0; //Set TMR0 to increase once
+                                //every instruction
+                                INTCONbits.T0IE = 1; //Enable timer overflow interrupt
+                                OPTION_REGbits.INTEDG = 0; //Falling edge trigger
+                                 INTCONbits. GIE = 1; //Enable global interrupt
+                                hasTimerStarted = !hasTimerStarted;
+                            }
         for (int i = 0; i < 20; i++) {
             PORTAbits.RA0 = 0; //Toggle RA0 on
             __delay_ms(1);
             PORTAbits.RA0 = 1; //Toggle RA0 off
             __delay_ms(1);
-        }
+        }                         
+           INTCONbits.T0IE = 0;              
     }
 }
 
+void elapsedTime()
+{
+    Lcd_Clear();
+    
+    Lcd_Write_Int(counter);
+}
 /******************************Button debounce*********************************/
 void debounce() 
 {
-    while (HOLD) {
+    while (HOLD) 
+    {
+        if(MAX)
+        {
+            elapsedTime();
+        }     
         __delay_us(10); //Waits until user removes finger from the button
     }
-    while (MAX) {
+    while (MAX) 
+    {
         __delay_us(10);
     }
 }
+
 
 /******************Stores the maximum value of readADC() so far****************/
 int Maximum(int Value) 
@@ -139,7 +154,6 @@ void main()
     extern unsigned int voltage;
     extern unsigned int Max;
     extern int counter;
-//    int hasTimerStarted = 0; //
     TRISA = 0b00010100; //Set up RA2 & RA4 as inputs 
     TRISB = 0b00000100; //Set up RB3 as input
 
@@ -226,7 +240,6 @@ void main()
                    // V1 = EEPROM_READ(0x05); // Read from memory
                    // V2 = EEPROM_READ(0x06);
                     Lcd_Clear();
-                    __delay_ms(1000);
                     Lcd_Set_Cursor(1,1);
                     CalculateAndWrite(StoredVoltage1); //Write the stored value
                     //on the LCD, 
@@ -243,15 +256,15 @@ void main()
                 }
             }
         }
-        if (MAX && HOLD)
-        {
-            debounce();
-            while(1)
-            {
-                Lcd_Clear();
-                Lcd_Write_Int(counter);
-            }
-        }
+//        if (MAX && HOLD)
+//        {
+//            debounce();
+//            while(1)
+//            {
+//                Lcd_Clear();
+//                Lcd_Write_Int(counter);
+//            }
+//        }
     }
 }
 //Counter increases every 256 uS, so every second counter increases by 3906s
